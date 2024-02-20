@@ -1,4 +1,4 @@
-# ClickGo Compiler
+# Package Downloader
 
 <p align="center">
     <a href="https://github.com/maiyun/clickgo-compiler/blob/master/LICENSE">
@@ -17,30 +17,26 @@
     </a>
 </p>
 
-Compile the source code for ClickGo Application, Control, and Theme into standalone files.
+로컬 폴더로 NPM 패키지 파일을 다운로드하면 패키지의 원래 디렉토리 구조가 유지됩니다. CSS 및 JS 파일이 포함되어 있으면 압축 된 최소 버전이 자동으로 생성됩니다.
 
-## Languages
+## 설치
 
-[简体中文](doc/README.sc.md) | [繁體中文](doc/README.tc.md) | [日本語](doc/README.ja.md) | [한국어](doc/README.ko.md)
-
-## Installation
-
-You can install it directly through the npm command.
+npm 명령어를 사용하여 직접 설치할 수 있습니다.
 
 ```sh
-$ npm i clickgo-compiler -g
+$ npm i @litert/loader -g
 ```
 
-Or install the latest development version to experience the latest features.
+또는 최신 개발 버전을 설치하여 최신 기능을 체험 할 수 있습니다.
 
 ```sh
-$ npm i clickgo-compiler@dev -g
+$ npm i @litert/loader@dev -g
 ```
 
-## Usage
+## 사용법
 
 
 
-## License
+## 라이선스
 
-This library is published under [Apache-2.0](./LICENSE) license.
+본 라이브러리는 [Apache-2.0](../LICENSE) 라이선스를 사용합니다.

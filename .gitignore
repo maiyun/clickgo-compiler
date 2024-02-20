@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+.npmrc
+cmd.js
+compiler.js
+index.js
