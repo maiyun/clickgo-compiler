@@ -67,7 +67,11 @@ $ clickgo -c control/button
 
 ## 生成位置
 
-编译后独立文件将会自动生成在执行命令的目录当中，也可以使用 `--save` 或 `-s` 参数指定保存的目录。
+编译后独立文件将会自动生成在执行命令的目录当中，也可以使用 `--save` 或 `-s` 参数指定保存的目录，例如：
+
+```sh
+$ clickgo -c control/button -s controls
+```
 
 ## 许可
 
