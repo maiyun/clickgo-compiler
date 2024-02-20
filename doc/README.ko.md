@@ -1,4 +1,4 @@
-# Package Downloader
+# ClickGo Compiler
 
 <p align="center">
     <a href="https://github.com/maiyun/clickgo-compiler/blob/master/LICENSE">
