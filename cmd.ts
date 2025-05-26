@@ -1,6 +1,6 @@
 /**
  * Project: clickgo-compiler, User: JianSuoQiYue
- * Date: 2024-2-20 15:40:13
+ * Date: 2024-2-20 15:40:13, 2025-5-27 00:06:51
  */
 
 // npm publish --tag dev --access public
@@ -18,19 +18,24 @@ const program = new cmd.Command();
 program
     .name('clickgo')
     .description('Compile the source code for ClickGo Application, Control, and Theme into standalone files.')
-    .version('0.0.1', '-v, --version');
+    .version('0.0.2', '-v, --version');
 
 // --- 下载包 ---
 program
     .option('-c, --control <path...>', 'compile controls')
     .option('-t, --theme <path>', 'compile theme')
     .option('-a, --app <path>', 'compile application')
+    .option('-i, --icon <path>', 'application icon')
     .option('-s, --save <path>', 'save path')
     .action(async function() {
         const opts = program.opts();
         if (opts.control) {
             const r = await compiler.control(opts.control, opts.save);
             console.log(`${r} controls compiled successfully.`);
+        }
+        else if (opts.app) {
+            const r = await compiler.application(opts.app, opts.icon, opts.save);
+            console.log(`Application result: ${r ? 'true' : 'false'}.`);
         }
     });
 

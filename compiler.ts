@@ -35,7 +35,7 @@ async function addFile(zipo: zip, base: string = '', path: string = ''): Promise
                 continue;
             }
             const buf = await fs.promises.readFile(base + '/' + item);
-            if (item.endsWith('.html')) {
+            if (item.endsWith('.html') || item.endsWith('.xml')) {
                 // --- 为了去除 html 中的空白和注释 ---
                 zipo.file(path + (path ? '/' : '') + item, purify(buf.toString()));
             }
@@ -61,35 +61,45 @@ async function addFile(zipo: zip, base: string = '', path: string = ''): Promise
 
 /**
  * --- 编译控件源码为 cgc 文件 ---
- * @param paths cgc 文件路径
- * @param save 保存路径，后缀无所谓是否 / 结尾
+ * @param paths 控件源码路径，后缀无所谓是否 / 结尾
+ * @param save 保存文件路径，不能以 / 结尾，不要带扩展名
  */
 export async function control(paths: string[], save?: string): Promise<number> {
     const zipo = new zip();
-    /** --- 最终保存的文件名 --- */
-    if (save && !save.endsWith('/')) {
-        save += '/';
-    }
+    /** --- 保存的文件名 --- */
     let name = '';
+    /** --- 控件的个数 --- */
     let num = 0;
     for (let path of paths) {
         if (path.endsWith('/')) {
             path = path.slice(0, -1);
         }
-        if (!name) {
-            try {
-                const buf = await fs.promises.readFile(path + '/config.json');
-                const json = JSON.parse(buf.toString());
-                name = json.name;
-            }
-            catch (e) {
-                console.log('ERROR', e);
-                return 0;
-            }
+        let json: any = {};
+        try {
+            const buf = await fs.promises.readFile(path + '/config.json');
+            json = JSON.parse(buf.toString());
         }
-        await addFile(zipo, path, name);
+        catch (e) {
+            console.log('ERROR', e);
+            return 0;
+        }
+        const cname = json.name;
+        if (!name) {
+            name = cname;
+        }
+        await addFile(zipo, path, cname);
         ++num;
     }
+    // --- 保存位置 ---
+    if (save) {
+        if (save.endsWith('/')) {
+            save += name;
+        }
+    }
+    else {
+        save = name;
+    }
+    // -- 筹备 zip 包 ---
     const buf = await zipo.generateAsync({
         'type': 'nodebuffer',
         'compression': 'DEFLATE',
@@ -97,6 +107,58 @@ export async function control(paths: string[], save?: string): Promise<number> {
             'level': 9
         }
     });
-    await fs.promises.writeFile((save ?? '') + name + '.cgc', buf);
+    await fs.promises.writeFile(save + '.cgc', buf);
     return num;
+}
+
+/**
+ * --- 编译控件源码为 cgc 文件 ---
+ * @param path 应用源码路径，后缀无所谓是否 / 结尾
+ * @param icon 应用图标文件图片完整路径
+ * @param save 保存文件路径，不能以 / 结尾，不要带扩展名
+ */
+export async function application(path: string, icon?: string, save?: string): Promise<boolean> {
+    const zipo = new zip();
+    if (path.endsWith('/')) {
+        path = path.slice(0, -1);
+    }
+    const lio = path.lastIndexOf('/');
+    /** --- 保存的文件名 --- */
+    const name = lio === -1 ? path : path.slice(lio + 1);
+    await addFile(zipo, path, '');
+    // --- 处理 icon ---
+    let iconBuf: Buffer;
+    if (icon) {
+        const iconFile = await fs.promises.readFile(icon);
+        if (iconFile) {
+            const length = iconFile.length.toString().padStart(7, '0');
+            iconBuf = Buffer.concat([Buffer.from(length), iconFile]);
+        }
+        else {
+            iconBuf = Buffer.from('0000000');
+        }
+    }
+    else {
+        iconBuf = Buffer.from('0000000');
+    }
+    // --- 保存位置 ---
+    if (save) {
+        if (save.endsWith('/')) {
+            save += name;
+        }
+    }
+    else {
+        save = name;
+    }
+    // -- 筹备 zip 包 ---
+    let buf = await zipo.generateAsync({
+        'type': 'nodebuffer',
+        'compression': 'DEFLATE',
+        'compressionOptions': {
+            'level': 9
+        }
+    });
+    buf = Buffer.concat([Buffer.from('-CGA-'), buf.subarray(0, 16), iconBuf, buf.subarray(16)]);
+    await fs.promises.writeFile(save + '.cga', buf);
+    return true;
 }
