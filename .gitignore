@@ -1,6 +1,13 @@
+.vscode/
+.VSCodeCounter/
+.vs/
+.git/
 node_modules/
-.DS_Store
 .npmrc
+.DS_Store
+*.d.ts
+package-lock.json
+
 cmd.js
 compiler.js
 index.js

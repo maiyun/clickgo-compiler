@@ -1,9 +1,15 @@
+.vscode/
+.VSCodeCounter/
+.vs/
 .git/
 node_modules/
-.eslintrc
+eslint.config.cjs
 .gitignore
 .npmrc
 .npmignore
-tsconfig.json
 .DS_Store
 /doc/
+*.ts
+!*.d.ts
+tsconfig.json
+package-lock.json

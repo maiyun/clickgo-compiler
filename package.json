@@ -1,30 +1,30 @@
 {
   "name": "clickgo-compiler",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Compile the source code for ClickGo Application, Control, and Theme into standalone files.",
+  "type": "module",
   "keywords": [
     "package",
     "downloader",
     "clone"
   ],
-  "main": "index.js",
   "author": "hanguoshuai",
   "license": "Apache-2.0",
   "bin": {
     "clickgo": "./bin/clickgo.js"
   },
   "devDependencies": {
-    "@litert/eslint-plugin-rules": "^0.2.5",
+    "@litert/eslint-plugin-rules": "^0.3.1",
     "@types/clean-css": "^4.2.11",
-    "@types/node": "^22.15.21",
-    "@types/tar": "^6.1.13",
-    "typescript": "^5.8.3"
+    "@types/node": "^24.3.3",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "clean-css": "^5.3.3",
-    "commander": "^14.0.0",
+    "commander": "^14.0.1",
+    "electron": "^37.4.0",
     "jszip": "^3.10.1",
-    "tar": "^7.4.3",
-    "terser": "^5.39.2"
+    "rollup": "^4.50.1",
+    "terser": "^5.44.0"
   }
 }

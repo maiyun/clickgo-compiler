@@ -1,15 +1,16 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "nodenext",
         "removeComments": true,
         "preserveConstEnums": true, // 保留 const 和 enum 声明
         // "outDir": "dist/",
         "sourceMap": false,
         "target": "ES2021",
         "strict": true,             // 严格模式
-        "declaration": false,       // d.ts
+        "declaration": true,        // d.ts
         "declarationMap": false,
         "newLine": "LF",
+        "moduleResolution": "nodenext",
         "resolveJsonModule": true,
         "esModuleInterop": true
     },

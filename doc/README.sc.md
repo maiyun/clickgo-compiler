@@ -6,18 +6,16 @@
     </a>
     <a href="https://www.npmjs.com/package/clickgo-compiler">
         <img alt="NPM stable version" src="https://img.shields.io/npm/v/clickgo-compiler?color=brightgreen&logo=npm" />
-        <img alt="NPM development version" src="https://img.shields.io/npm/v/clickgo-compiler/dev?color=yellow&logo=npm" />
-    </a><br>
+    </a>
     <a href="https://github.com/maiyun/clickgo-compiler/releases">
         <img alt="GitHub releases" src="https://img.shields.io/github/v/release/maiyun/clickgo-compiler?color=brightgreen&logo=github" />
-        <img alt="GitHub pre-releases" src="https://img.shields.io/github/v/release/maiyun/clickgo-compiler?color=yellow&logo=github&include_prereleases" />
     </a>
     <a href="https://github.com/maiyun/clickgo-compiler/issues">
         <img alt="GitHub issues" src="https://img.shields.io/github/issues/maiyun/clickgo-compiler?color=blue&logo=github" />
     </a>
 </p>
 
-下载 NPM 包的文件到本地文件夹，保持包内原有的目录结构。如果包含 css 和 js 文件的话则会自动生成一个 min 的压缩版。
+编译 ClickGo 的应用、主题、控件、启动文件和 native 包。
 
 ## 安装
 
@@ -25,12 +23,6 @@
 
 ```sh
 $ npm i clickgo-compiler -g
-```
-
-或者安装最新的开发版来体验最新的功能。
-
-```sh
-$ npm i clickgo-compiler@dev -g
 ```
 
 ## 使用
@@ -49,12 +41,36 @@ $ clickgo --app app
 $ clickgo --app folder
 ```
 
+携带 `--icon` 或 `-i` 参数可以指定应用的图标文件，例如：
+
+```sh
+$ clickgo --app folder --icon icon.png
+```
+
+cga 文件会生成在对应文件夹的父文件夹下，如上述例子会生成在 folder 的父文件夹下。
+
+携带 `--save` 或 `-s` 参数可以指定编译后的文件保存的路径（不要带扩展名或以 / 结尾的路径），例如：
+
+```sh
+$ clickgo --app folder --save app
+$ clickgo --app folder --save build/
+```
+
 ## 编译主题
 
 使用 `--theme` 或 `-t` 参数将某个目录编译为 cgt ClickGo 主题文件，例如：
 
 ```sh
-$ clickgo --theme theme/light
+$ clickgo --theme light
+```
+
+cgt 文件会生成在对应文件夹的父文件夹下，如上述例子会生成在 light 的父文件夹下。
+
+携带 `--save` 或 `-s` 参数可以指定编译后的文件保存的路径（不要带扩展名或以 / 结尾的路径），例如：
+
+```sh
+$ clickgo --theme light --save theme
+$ clickgo --theme light --save build/
 ```
 
 ## 编译控件
@@ -65,12 +81,21 @@ $ clickgo --theme theme/light
 $ clickgo -c control/button
 ```
 
-## 生成位置
+cgc 文件会生成在对应文件夹的父文件夹下，如上述例子会生成在 control 文件夹下。
 
-编译后独立文件将会自动生成在执行命令的目录当中，也可以使用 `--save` 或 `-s` 参数指定保存的文件路径（不要带扩展名），例如：
+携带 `--save` 或 `-s` 参数可以指定编译后的文件保存的路径（不要带扩展名或以 / 结尾的路径），例如：
 
 ```sh
-$ clickgo -c control/button -s controls/abc
+$ clickgo --save common --theme button checkbox
+$ clickgo --save build/ --theme button
+```
+
+## 编译启动文件
+
+使用 `--boot` 或 `-b` 参数将某个入口 js 文件（不含扩展名）进行编译，网页上要加载编译后的 js 入口文件，例如：
+
+```sh
+$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.0.0/dist/index.js
 ```
 
 ## 许可
