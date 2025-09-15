@@ -95,7 +95,29 @@ $ clickgo --save build/ --theme button
 使用 `--boot` 或 `-b` 参数将某个入口 js 文件（不含扩展名）进行编译，网页上要加载编译后的 js 入口文件，例如：
 
 ```sh
-$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.0.0/dist/index.js
+$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.x.x/dist/index.js
+```
+
+## 编译 native 包
+
+使用 `--native` 或 `-n` 参数将当前目录编译为 native 包，例如：
+
+```sh
+$ clickgo --native
+```
+
+如果你在中国大陆，请使用 `--mirror` 或 `-m` 参数使用镜像进行打包，例如：
+
+```sh
+$ clickgo --native --mirror cn
+```
+
+## 执行 native 包
+
+使用 `--run` 或 `-r` 参数在不编译的情况下执行 native 包，例如：
+
+```sh
+$ clickgo --run ./dist/index
 ```
 
 ## 许可

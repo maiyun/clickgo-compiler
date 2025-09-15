@@ -25,22 +25,22 @@ program
 
 // --- 下载包 ---
 program
+    // --- native ---
     .option('-r, --run <path>', 'test run')
     .option('-n, --native', 'build native')
     .option('-p, --platform <platform>', 'build native', 'win')
     .option('-m, --mirror <mirror>', 'electron download mirror')
-
+    // --- boot ---
     .option('-b, --boot <path>', 'compile boot')
-
     .option('-g, --clickgo <path>', 'clickgo path')
-
+    // --- control ---
     .option('-c, --control <path...>', 'compile controls')
-
+    // --- theme ---
     .option('-t, --theme <path>', 'compile theme')
-
+    // --- app ---
     .option('-a, --app <path>', 'compile application')
     .option('-i, --icon <path>', 'application icon')
-
+    // --- save ---
     .option('-s, --save <path>', 'save path')
     .action(function() {
         const opts = program.opts();
