@@ -17,12 +17,14 @@
     "@litert/eslint-plugin-rules": "^0.3.1",
     "@types/clean-css": "^4.2.11",
     "@types/node": "^24.3.3",
+    "@types/yargs": "^17.0.33",
     "typescript": "^5.9.2"
   },
   "dependencies": {
     "clean-css": "^5.3.3",
     "commander": "^14.0.1",
     "electron": "^37.4.0",
+    "electron-builder": "^26.0.12",
     "jszip": "^3.10.1",
     "rollup": "^4.50.1",
     "terser": "^5.44.0"
