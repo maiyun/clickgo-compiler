@@ -29,12 +29,6 @@
 $ npm i clickgo-compiler -g
 ```
 
-或者安裝最新的開發版來體驗最新的功能。
-
-```sh
-$ npm i clickgo-compiler@dev -g
-```
-
 ## 使用
 
 安裝後，直接在當前目錄使用命令 `clickgo` 即可，例如執行以下命令：

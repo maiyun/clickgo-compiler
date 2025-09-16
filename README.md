@@ -29,12 +29,6 @@ You can install it directly through the npm command.
 $ npm i clickgo-compiler -g
 ```
 
-Or install the latest development version to experience the latest features.
-
-```sh
-$ npm i clickgo-compiler@dev -g
-```
-
 ## Usage
 
 After installation, use the command `clickgo` directly in the current directory. For example:
