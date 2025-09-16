@@ -6,11 +6,9 @@
     </a>
     <a href="https://www.npmjs.com/package/clickgo-compiler">
         <img alt="NPM stable version" src="https://img.shields.io/npm/v/clickgo-compiler?color=brightgreen&logo=npm" />
-        <img alt="NPM development version" src="https://img.shields.io/npm/v/clickgo-compiler/dev?color=yellow&logo=npm" />
-    </a><br>
+    </a>
     <a href="https://github.com/maiyun/clickgo-compiler/releases">
         <img alt="GitHub releases" src="https://img.shields.io/github/v/release/maiyun/clickgo-compiler?color=brightgreen&logo=github" />
-        <img alt="GitHub pre-releases" src="https://img.shields.io/github/v/release/maiyun/clickgo-compiler?color=yellow&logo=github&include_prereleases" />
     </a>
     <a href="https://github.com/maiyun/clickgo-compiler/issues">
         <img alt="GitHub issues" src="https://img.shields.io/github/issues/maiyun/clickgo-compiler?color=blue&logo=github" />

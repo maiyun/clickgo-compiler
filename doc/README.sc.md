@@ -17,6 +17,10 @@
 
 编译 ClickGo 的应用、主题、控件、启动文件和 native 包。
 
+## 语言
+
+[English](../README.md) | [繁體中文](README.tc.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
+
 ## 安装
 
 你可以直接通过 npm 命令进行安装。
