@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "nodenext",
+        "module": "esnext",
         "removeComments": true,
         "preserveConstEnums": true, // 保留 const 和 enum 声明
         // "outDir": "dist/",
@@ -10,7 +10,7 @@
         "declaration": true,        // d.ts
         "declarationMap": false,
         "newLine": "LF",
-        "moduleResolution": "nodenext",
+        "moduleResolution": "node",
         "resolveJsonModule": true,
         "esModuleInterop": true
     },
