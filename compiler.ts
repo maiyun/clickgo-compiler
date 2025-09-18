@@ -14,7 +14,7 @@ const runPath = process.cwd().replace(/\\/g, '/') + '/';
 // -----------
 
 /** --- 匹配 extends 后面的类名，为其增加新的方法 --- */
-const reg = /extends.+?(AbstractForm|AbstractPanel|AbstractControl)\s*{/g;
+const reg = /extends.+?(AbstractForm|AbstractPanel|AbstractControl|AbstractThread)\s*{/g;
 /** --- 增加些必备数据，如 filename --- */
 function preTransformPlugin(base: string): rollup.InputPluginOption {
     return {
@@ -30,7 +30,7 @@ function preTransformPlugin(base: string): rollup.InputPluginOption {
                 }),
                 'map': null,
             };
-        }
+        },
     };
 }
 
@@ -386,7 +386,7 @@ async function addFile(zipo: zip, base: string = '', path: string = ''): Promise
                 // --- 为了去除 html 中的空白和注释 ---
                 zipo.file(path + (path ? '/' : '') + item, lTool.purify(buf.toString()));
             }
-            else if (item.endsWith('.js')) {
+            else if (item.endsWith('.js') || item.endsWith('.js.map')) {
                 if (!item.endsWith('.pack.js')) {
                     continue;
                 }
