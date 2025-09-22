@@ -23,7 +23,6 @@ program
     .description('Compile the source code for ClickGo Application, Control, and Theme into standalone files.')
     .version('1.0.1', '-v, --version');
 
-// --- 下载包 ---
 program
     // --- native ---
     .option('-r, --run <path>', 'test run')
