@@ -21,7 +21,7 @@ const program = new cmd.Command();
 program
     .name('clickgo')
     .description('Compile the source code for ClickGo Application, Control, and Theme into standalone files.')
-    .version('1.0.1', '-v, --version');
+    .version('1.0.2', '-v, --version');
 
 program
     // --- native ---
@@ -45,7 +45,8 @@ program
         const opts = program.opts();
         if (opts.run) {
             // --- run - 只运行 ---
-            const electronPath = path.join(import.meta.url.replace('file:///', ''), '../node_modules/.bin/electron' + (process.platform === 'win32' ? '.cmd' : ''));
+            const electronPath = path.join(decodeURIComponent(import.meta.url).replace('file://', '').replace(/^\/(\w:)/, '$1'), '../node_modules/.bin/electron' + (process.platform === 'win32' ? '.cmd' : ''));
+            console.log(`Load electron: ${electronPath}`);
             const appPath = path.join(process.cwd(), opts.run);
             const child = cp.spawn(electronPath, [appPath], {
                 'stdio': 'inherit',
