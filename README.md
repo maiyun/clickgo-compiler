@@ -15,7 +15,7 @@
     </a>
 </p>
 
-Compile ClickGo applications, themes, controls, boot files, and native packages.
+Compile ClickGo applications, themes, controls, and native packages.
 
 ## Languages
 
@@ -92,14 +92,6 @@ You can specify the save path for the compiled file using the `--save` or `-s` p
 ```sh
 $ clickgo --save common --theme button checkbox
 $ clickgo --save build/ --theme button
-```
-
-## Compile Boot File
-
-Use the `--boot` or `-b` parameter to compile an entry js file (without extension). The compiled js entry file should be loaded on the web page. For example:
-
-```sh
-$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.x.x/dist/index.js
 ```
 
 ## Compile Native Package

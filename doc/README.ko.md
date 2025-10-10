@@ -94,14 +94,6 @@ $ clickgo --save common --theme button checkbox
 $ clickgo --save build/ --theme button
 ```
 
-## 부트 파일 컴파일
-
-`--boot` 또는 `-b` 매개변수를 사용하여 진입점 js 파일(확장자 없음)을 컴파일합니다. 컴파일된 js 진입점 파일은 웹 페이지에서 로드해야 합니다. 예시:
-
-```sh
-$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.x.x/dist/index.js
-```
-
 ## 네이티브 패키지 컴파일
 
 `--native` 또는 `-n` 매개변수를 사용하여 현재 디렉토리를 네이티브 패키지로 컴파일합니다. 예시:

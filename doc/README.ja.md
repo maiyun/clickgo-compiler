@@ -94,14 +94,6 @@ $ clickgo --save common --theme button checkbox
 $ clickgo --save build/ --theme button
 ```
 
-## ブートファイルのコンパイル
-
-`--boot` または `-b` パラメータを使用して、エントリ js ファイル（拡張子なし）をコンパイルします。コンパイル後の js エントリファイルは、Web ページで読み込む必要があります。例：
-
-```sh
-$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.x.x/dist/index.js
-```
-
 ## ネイティブパッケージのコンパイル
 
 `--native` または `-n` パラメータを使用して、現在のディレクトリをネイティブパッケージにコンパイルします。例：

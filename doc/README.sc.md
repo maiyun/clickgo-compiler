@@ -94,14 +94,6 @@ $ clickgo --save common --theme button checkbox
 $ clickgo --save build/ --theme button
 ```
 
-## 编译启动文件
-
-使用 `--boot` 或 `-b` 参数将某个入口 js 文件（不含扩展名）进行编译，网页上要加载编译后的 js 入口文件，例如：
-
-```sh
-$ clickgo -b index -g https://cdn.jsdelivr.net/npm/clickgo@4.x.x/dist/index.js
-```
-
 ## 编译 native 包
 
 使用 `--native` 或 `-n` 参数将当前目录编译为 native 包，例如：

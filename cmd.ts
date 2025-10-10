@@ -29,9 +29,6 @@ program
     .option('-n, --native', 'build native')
     .option('-p, --platform <platform>', 'build native', 'win')
     .option('-m, --mirror <mirror>', 'electron download mirror')
-    // --- boot ---
-    .option('-b, --boot <path>', 'compile boot')
-    .option('-g, --clickgo <path>', 'clickgo path')
     // --- control ---
     .option('-c, --control <path...>', 'compile controls')
     // --- theme ---
@@ -85,12 +82,6 @@ program
             }).catch((e) => {
                 console.error('Native build failed:', e);
             });
-        }
-        else if (opts.boot) {
-            // --- boot ---
-            compiler.boot(opts.boot, opts.clickgo, opts.save).then((r: any) => {
-                console.log(`Boot result: ${r}.`);
-            }).catch(() => {});
         }
         else if (opts.control) {
             // --- control ---
