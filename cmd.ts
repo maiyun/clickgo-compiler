@@ -21,7 +21,7 @@ const program = new cmd.Command();
 program
     .name('clickgo')
     .description('Compile the source code for ClickGo Application, Control, and Theme into standalone files.')
-    .version('1.0.3', '-v, --version');
+    .version('1.0.4', '-v, --version');
 
 program
     // --- native ---
