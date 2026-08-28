@@ -10,7 +10,7 @@
         "declaration": true,        // d.ts
         "declarationMap": false,
         "newLine": "LF",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "esModuleInterop": true,
         "skipLibCheck": true
