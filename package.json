@@ -1,6 +1,6 @@
 {
   "name": "clickgo-compiler",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Compile the source code for ClickGo Application, Control, and Theme into standalone files.",
   "type": "module",
   "keywords": [
