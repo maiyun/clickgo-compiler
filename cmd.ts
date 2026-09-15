@@ -10,18 +10,24 @@
  * pkgdl dl clickgo@x.x.x vue@x.x.x jszip@x.x.x monaco-editor@x.x.x
  */
 
-import * as cmd from 'commander';
 import * as cp from 'child_process';
 import * as path from 'path';
+import * as cmd from 'commander';
 import * as builder from 'electron-builder';
+import electronPackage from 'electron/package.json' with { type: 'json' };
 import * as compiler from './compiler.js';
+import compilerPackage from './package.json' with { type: 'json' };
 
 const program = new cmd.Command();
+/** --- 当前 ClickGo Compiler 版本 --- */
+const version = compilerPackage.version;
+/** --- 当前安装的 Electron 版本，运行和打包必须使用同一版本 --- */
+const electronVersion = electronPackage.version;
 
 program
     .name('clickgo')
     .description('Compile the source code for ClickGo Application, Control, and Theme into standalone files.')
-    .version('2.0.0', '-v, --version');
+    .version(version, '-v, --version');
 
 program
     // --- native ---
@@ -72,7 +78,7 @@ program
             builder.build({
                 'targets': targets,
                 'config': {
-                    'electronVersion': '37.4.0',
+                    'electronVersion': electronVersion,
                     'electronDownload': {
                         'mirror': opts.mirror === 'cn' ? 'https://npmmirror.com/mirrors/electron/' : undefined,
                     },
