@@ -10,4 +10,5 @@ package-lock.json
 
 cmd.js
 compiler.js
+electron.js
 index.js

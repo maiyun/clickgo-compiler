@@ -11,11 +11,11 @@
  */
 
 import * as cp from 'child_process';
-import * as path from 'path';
 import * as cmd from 'commander';
 import * as builder from 'electron-builder';
 import electronPackage from 'electron/package.json' with { type: 'json' };
 import * as compiler from './compiler.js';
+import { getElectronPath } from './electron.js';
 import compilerPackage from './package.json' with { type: 'json' };
 
 const program = new cmd.Command();
@@ -44,19 +44,22 @@ program
     .option('-i, --icon <path>', 'application icon')
     // --- save ---
     .option('-s, --save <path>', 'save path')
-    .action(function() {
+    .action(async function() {
         const opts = program.opts();
         if (opts.run) {
             // --- run - 只运行 ---
-            const electronPath = path.join(decodeURIComponent(import.meta.url).replace('file://', '').replace(/^\/(\w:)/, '$1'), '../node_modules/.bin/electron' + (process.platform === 'win32' ? '.cmd' : ''));
+            const electronPath = await getElectronPath(opts.mirror);
             console.log(`Load electron: ${electronPath}`);
-            const appPath = path.join(process.cwd(), opts.run);
-            const child = cp.spawn(electronPath, [appPath], {
+            const child = cp.spawn(electronPath, [opts.run], {
+                'cwd': process.cwd(),
                 'stdio': 'inherit',
-                'shell': process.platform === 'win32',
+            });
+            child.on('error', (e) => {
+                console.error('Electron run failed:', e);
+                process.exit(1);
             });
             child.on('close', (code) => {
-                process.exit(code);
+                process.exit(code ?? 1);
             });
         }
         else if (opts.native) {
@@ -109,4 +112,4 @@ program
         }
     });
 
-program.parse();
+await program.parseAsync();

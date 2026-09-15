@@ -102,7 +102,7 @@ Use the `--native` or `-n` parameter to compile the current directory into a nat
 $ clickgo --native
 ```
 
-If you are in mainland China, use the `--mirror` or `-m` parameter to package using a mirror. For example:
+If you are in mainland China, use the `--mirror` or `-m` parameter to download Electron from a mirror. The option applies to both native packaging and test runs. For example:
 
 ```sh
 $ clickgo --native --mirror cn
@@ -114,7 +114,10 @@ Use the `--run` or `-r` parameter to execute the native package without compilin
 
 ```sh
 $ clickgo --run ./dist/index
+$ clickgo --run ./dist/index --mirror cn
 ```
+
+The Electron runtime used by `--run` is stored in the current user's cache directory, so a system-wide installation of ClickGo Compiler does not require write access to the global `node_modules` directory.
 
 ## License
 

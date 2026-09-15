@@ -102,7 +102,7 @@ $ clickgo --save build/ --theme button
 $ clickgo --native
 ```
 
-如果你在中国大陆，请使用 `--mirror` 或 `-m` 参数使用镜像进行打包，例如：
+如果你在中国大陆，请使用 `--mirror` 或 `-m` 参数从镜像下载 Electron。该参数同时适用于 native 打包和测试运行，例如：
 
 ```sh
 $ clickgo --native --mirror cn
@@ -114,7 +114,10 @@ $ clickgo --native --mirror cn
 
 ```sh
 $ clickgo --run ./dist/index
+$ clickgo --run ./dist/index --mirror cn
 ```
+
+`--run` 使用的 Electron 运行时会保存在当前用户的缓存目录中，因此全局安装 ClickGo Compiler 时不需要对全局 `node_modules` 目录拥有写权限。
 
 ## 许可
 
