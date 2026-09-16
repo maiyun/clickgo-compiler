@@ -16,6 +16,7 @@ import * as builder from 'electron-builder';
 import electronPackage from 'electron/package.json' with { type: 'json' };
 import * as compiler from './compiler.js';
 import { getElectronPath } from './electron.js';
+import { NativeLinuxPackager } from './native.js';
 import compilerPackage from './package.json' with { type: 'json' };
 
 const program = new cmd.Command();
@@ -78,8 +79,9 @@ program
                     targets = builder.Platform.MAC.createTarget();
                 }
             }
-            builder.build({
+            await builder.build({
                 'targets': targets,
+                'platformPackagerFactory': opts.platform === 'linux' ? (info) => new NativeLinuxPackager(info) : undefined,
                 'config': {
                     'electronVersion': electronVersion,
                     'electronDownload': {
@@ -90,6 +92,7 @@ program
                 console.log(`Native build result: ${r.join(', ')}.`);
             }).catch((e) => {
                 console.error('Native build failed:', e);
+                process.exitCode = 1;
             });
         }
         else if (opts.control) {

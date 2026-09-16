@@ -108,6 +108,22 @@ $ clickgo --native
 $ clickgo --native --mirror cn
 ```
 
+### Linux 應用程式圖示
+
+使用 `clickgo --native --platform linux` 打包時，將 `build.linux.icon` 或共用的 `build.icon` 設為單張 PNG，即會自動產生 Linux 桌面所需的多尺寸圖示。原圖必須為至少 256×256 的正方形，建議 512×512 或 1024×1024。例如：
+
+```json
+{
+    "build": {
+        "linux": {
+            "icon": "./doc/logo.png"
+        }
+    }
+}
+```
+
+產生的圖示為暫存檔案，打包結束後清理，不修改原圖或專案設定。現有圖示目錄仍直接使用，不會重新產生。這設定的是安裝後的應用程式列表圖示，而非 Native 視窗執行時的圖示。
+
 ## 執行 native 包
 
 使用 `--run` 或 `-r` 參數在不編譯的情況下執行 native 包，例如：

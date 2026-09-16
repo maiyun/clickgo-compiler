@@ -108,6 +108,22 @@ If you are in mainland China, use the `--mirror` or `-m` parameter to download E
 $ clickgo --native --mirror cn
 ```
 
+### Linux Application Icons
+
+When building with `clickgo --native --platform linux`, a single PNG configured in `build.linux.icon` (or the shared `build.icon`) is automatically resized into standard Linux desktop icon sizes. Use a square PNG of at least 256×256 pixels; 512×512 or 1024×1024 is recommended. For example:
+
+```json
+{
+    "build": {
+        "linux": {
+            "icon": "./doc/logo.png"
+        }
+    }
+}
+```
+
+Generated icons are temporary and cleaned up after packaging. The source image and project configuration are not changed. Existing icon-set directories remain supported without regeneration. This configures the installed application-list icon, not the native window's runtime icon.
+
 ## Run Native Package
 
 Use the `--run` or `-r` parameter to execute the native package without compiling. For example:

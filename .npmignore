@@ -9,6 +9,7 @@ eslint.config.cjs
 .npmignore
 .DS_Store
 /doc/
+/test/
 *.ts
 !*.d.ts
 tsconfig.json
